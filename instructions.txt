@@ -1,0 +1,2 @@
+make a paddle game
+add bonus when done, add targets at top (breakout game)
