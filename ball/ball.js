@@ -83,16 +83,18 @@ function updateBall(timeChange) {
   let keepers = [];
   let slopeVel = ball.vel.y / ball.vel.x;
   if (ball.pos.y < brickBottom + ball.halfDim.y) {
+    let hasCollided = false;
     for (let brick of bricks) {
       if (
+        !hasCollided && 
         ballTop < brick.bottom &&
         ballBottom > brick.top &&
         ballLeft < brick.right &&
         ballRight > brick.left
       ) {
-        // need to comapre penetration vector vs velocity vector slopes
-        // but for now just randomize
-        let dy, dx;
+        hasCollided = true;
+        let dy = 0; 
+        let dx = 0;
         if (ball.vel.y < 0) {
           dy = ballTop - brick.bottom;
         } else {
